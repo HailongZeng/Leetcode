@@ -15,6 +15,7 @@ public class test {
     }
 
     public static void main(String[] args) {
+        System.out.println(1&7);
         String s1 = "12";
         System.out.println(decode(s1));
         String s2 = "226";
