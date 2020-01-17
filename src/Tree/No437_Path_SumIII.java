@@ -43,7 +43,7 @@ public class No437_Path_SumIII {
         }
     }
 
-    //Recursive
+    //Recursive  time:O(n^2)  space:O(n)
     public static int pathSum1(TreeNode root, int sum){
         if (root == null) return 0;
         return numberOfPaths(root, sum) + pathSum1(root.left, sum) + pathSum1(root.right, sum);
@@ -55,7 +55,7 @@ public class No437_Path_SumIII {
         return (left == 0 ? 1 : 0) + numberOfPaths(root.left, left) + numberOfPaths(root.right, left);
     }
 
-    //Running prefix sum
+    //Running prefix sum  time:O(n)  space:O(n)
     public static int pathSum2(TreeNode root, int sum){
         if (root == null) return 0;
         HashMap<Integer, Integer> map = new HashMap<>();

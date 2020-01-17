@@ -50,13 +50,13 @@ public class No113_Path_SumII {
             if (root.val == sum){
                 cur.add(root.val);
                 res.add(new ArrayList<>(cur));
-                cur.remove(cur.size() - 1);
+                cur.remove(cur.size()-1);
             }
         }
         cur.add(root.val);
-        helper(root.left, sum - root.val, cur, res);
-        helper(root.right, sum - root.val, cur, res);
-        cur.remove(cur.size() - 1);
+        helper(root.left,sum-root.val, cur, res);
+        helper(root.right, sum-root.val, cur, res);
+        cur.remove(cur.size()-1);
     }
 
     public static void main(String[] args) {

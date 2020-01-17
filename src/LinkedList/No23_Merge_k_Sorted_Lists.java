@@ -29,7 +29,7 @@ public class No23_Merge_k_Sorted_Lists {
         public ListNode(int x) { val = x; }
     }
 
-    //O(Nlonk)  time: O(k)
+    //O(Nlogk)  time: O(k)
     public static ListNode mergeKLists2(ListNode[] lists){
         PriorityQueue<ListNode> pq = new PriorityQueue<>(new Comparator<ListNode>(){
             public int compare(ListNode a, ListNode b){
@@ -59,7 +59,7 @@ public class No23_Merge_k_Sorted_Lists {
         int n = lists.length;
         while (n > 1){
             int k = (1 + n) / 2;
-            for (int i = 0; i < n; i++){
+            for (int i = 0; i < n / 2; i++){
                 lists[i] = merge(lists[i], lists[i+k]);
             }
             n = k;

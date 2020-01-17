@@ -45,7 +45,8 @@ public class No109_Convert_Sorted_List_to_Binary_Search_Tree {
         }
     }
 
-    public static TreeNode sortedListToBST(ListNode head){
+    //time:O(NlogN)  space:O(logN)
+    public static TreeNode sortedListToBST1(ListNode head){
         if (head == null) return null;
         return helper(head, null);
     }
@@ -61,6 +62,42 @@ public class No109_Convert_Sorted_List_to_Binary_Search_Tree {
         cur.left = helper(head, slow);
         cur.right = helper(slow.next, tail);
         return cur;
+    }
+
+    //inorder  time:O(N)  space:O(logN)
+    public static TreeNode sortedListToBST2(ListNode head){
+        int size = findSize(head);
+        ListNode[] start = new ListNode[]{head}; //O(1)
+        return inorder(start, 0, size-1);
+    }
+
+    public static int findSize(ListNode head){
+        int len = 0;
+        ListNode p = head;
+        while (p != null){
+            p = p.next;
+            len += 1;
+        }
+        return len;
+    }
+
+    public static TreeNode inorder(ListNode[] start, int l, int r){
+        //invalid case
+        if (l > r){
+            return null;
+        }
+        TreeNode node;
+        if (l == r){
+            node = new TreeNode(start[0].val);
+            start[0] = start[0].next;
+            return node;
+        }
+        int m = (l + r + 1) / 2;
+        TreeNode left = inorder(start, l, m - 1);
+        node = new TreeNode(start[0].val);
+        node.left = left;
+        node.right = inorder(start, m+1, r);
+        return node;
     }
 
     public static void printNode(ListNode l){
@@ -107,7 +144,7 @@ public class No109_Convert_Sorted_List_to_Binary_Search_Tree {
                 pre.next = new ListNode(st.nextInt());
                 pre = pre.next;
             }
-            TreeNode res = sortedListToBST(dummy.next);
+            TreeNode res = sortedListToBST1(dummy.next);
             printTree(res);
         }
     }

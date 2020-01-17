@@ -44,7 +44,7 @@ import java.util.*;
  */
 public class No126_Word_LadderII {
 
-    //First using Bi-BFS to construct a map, key is a String, value if a List, which contains all the string in dict can be transformed from keyString
+    //First using Bi-BFS to construct a map, key is a String, value is a List, which contains all the string in dict can be transformed from keyString
     //Then do dfs to find all the path
     public static List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList){
         List<List<String>> res = new ArrayList<>();

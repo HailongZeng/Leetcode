@@ -53,7 +53,7 @@ public class No31_Next_Permutation {
         nums[minIndex] = target;
 
         //sort the number between targetIndex and nums.length
-        Arrays.sort(nums, target, nums.length);
+        Arrays.sort(nums, targetIndex, nums.length);
         return;
     }
 
